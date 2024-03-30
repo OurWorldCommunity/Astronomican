@@ -1,0 +1,140 @@
+
+config:
+  #效果持续时间(单次应用效果应持续多久)/单位:t
+  dur_time: 400
+  #效果应用间隔(显然，这应该小于效果持续时间)/单位:秒
+  effect_interval: 15
+  #如果启用，则异步加载数据配置
+  #若星炬过多导致热重载时卡顿，则启用它
+  async_enable: false
+
+data:
+  #信标名称
+  黄金王座:
+    #该信标中心位置
+    center_loc:
+      #世界名称
+      world_name: world
+      x: 0
+      #目前y没有意义，不计算高度
+      y: 0
+      z: 0
+    #效果列表
+    effect_list:
+      #效果名称，参考这里https://hub.spigotmc.org/javadocs/spigot/org/bukkit/potion/PotionEffectType.html
+      #相同的效果不要出现两次喵!
+      - HEALTH_BOOST:
+          #该值为true时，为玩家增加buff(效果等级会相加)
+          #该值为false时，为玩家抵消其他星炬产生的该效果(效果等级相减,结果为零或负数时将不会应用效果)
+          gl: true
+          #效果等级
+          level: 1
+          #作用半径
+          range_min: 0
+          range_max: 1000
+      - HUNGER:
+          level: 1
+          gl: true
+          range_min: 10000
+          #若最大半径为-1，则表示无穷大
+          range_max: -1
+      - FIRE_RESISTANCE:
+          level: 1
+          gl: true
+          range_min: 0
+          range_max: 1000
+      - DARKNESS:
+          level: 1
+          gl: true
+          range_min: 20000
+          range_max: -1
+      - WEAKNESS:
+          level: 1
+          gl: true
+          range_min: 10000
+          range_max: 15000
+      - WEAKNESS:
+          level: 2
+          gl: true
+          range_min: 15000
+          range_max: 17500
+      - WEAKNESS:
+          level: 3
+          gl: true
+          range_min: 17500
+          range_max: 20000
+      - WEAKNESS:
+          level: 4
+          gl: true
+          range_min: 20000
+          range_max: 25000
+      - WEAKNESS:
+          level: 5
+          gl: true
+          range_min: 25000
+          range_max: -1
+      - SLOW:
+          level: 1
+          gl: true
+          range_min: 20000
+          range_max: 25000
+      - SLOW:
+          level: 2
+          gl: true
+          range_min: 25000
+          range_max: 30000
+
+  圣歌引擎:
+    center_loc:
+      world_name: world
+      x: 0
+      y: 0
+      z: 0
+    effect_list:
+      - NIGHT_VISION:
+          gl: true
+          level: 10
+          range_min: 100
+          range_max: 150
+      - SLOW:
+          level: 10
+          gl: true
+          range_min: 200
+          range_max: 250
+  黑色琉璃:
+    center_loc:
+      world_name: world
+      x: 15000
+      y: 0
+      z: 10000
+    effect_list:
+      - DARKNESS:
+          level: 10
+          gl: false
+          range_min: 0
+          range_max: 100
+      - WEAKNESS:
+          level: 10
+          gl: false
+          range_min: 0
+          range_max: 100
+      - SLOW:
+          level: 10
+          gl: false
+          range_min: 100
+          range_max: 200
+      - DARKNESS:
+          level: 1
+          gl: false
+          range_min: 100
+          range_max: 200
+      - WEAKNESS:
+          level: 1
+          gl: false
+          range_min: 100
+          range_max: 200
+      - SLOW:
+          level: 1
+          gl: false
+          range_min: 100
+          range_max: 200

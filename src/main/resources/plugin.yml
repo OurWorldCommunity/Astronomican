@@ -1,0 +1,4 @@
+name: astronomican
+version: '${version}'
+main: online.smyhw.mc.plugin.astronomican.Astronomican
+api-version: '1.20'
