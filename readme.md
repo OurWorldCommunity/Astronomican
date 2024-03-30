@@ -12,7 +12,7 @@
 2. 更改配置文件
 3. 重启服务器或重载插件以应用配置
 
-* **所有配置和功能参看config.yml(/src/config.yml)**
+* **所有配置和功能参看[config.yml](https://github.com/OurWorldCommunity/Astronomican/blob/releases/src/main/resources/config.yml)**
 ***
 ## 配置功能概述：
 * 支持创建单个或多个星炬
