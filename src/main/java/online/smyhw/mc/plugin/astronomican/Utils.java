@@ -197,7 +197,7 @@ public class Utils {
         //读取信标配置
         ConfigurationSection section = Astronomican.config.getConfigurationSection("data");
         for (String torch_name : section.getKeys(false)) {
-            Astronomican.logger.info("解析星炬 -> "+torch_name);
+            if(Astronomican.config.getBoolean("config.log_init",false)) Astronomican.logger.info("解析星炬 -> "+torch_name);
             //读取信标中心
             String world_name = Astronomican.config.getString("data."+torch_name+".center_loc.world_name","world");
             int x = Astronomican.config.getInt("data."+torch_name+".center_loc.x",0);
@@ -227,20 +227,22 @@ public class Utils {
      * @return 效果列表
      */
     public static List<EffectRange> load_EffectRange(String cfg_path){
-        Astronomican.logger.info("读取效果列表 -> "+cfg_path);
+        if(Astronomican.config.getBoolean("config.log_init",false)) Astronomican.logger.info("读取效果列表 -> "+cfg_path);
         List<EffectRange> res = new ArrayList<>();
         List<Map<?, ?>> eff_list = Astronomican.config.getMapList(cfg_path);
         for(Map one_effect : eff_list){
             String eff_name = one_effect.keySet().toArray()[0]+"";
-            Astronomican.logger.info("效果名称 -> "+eff_name);
             Map<String, Object> sub_map = (Map<String, Object>) one_effect.get(eff_name);
             int level = (Integer)sub_map.getOrDefault("level",100)-1;
             int range_min = (Integer)sub_map.getOrDefault("range_min",1);
             int range_max = (Integer)sub_map.getOrDefault("range_max",999);
             boolean gl = (Boolean) sub_map.getOrDefault("gl",true);
-            Astronomican.logger.info("等级 -> "+level);
-            Astronomican.logger.info("范围 -> "+range_min+" - "+range_max);
-            Astronomican.logger.info("是否增益 -> "+gl);
+            if(Astronomican.config.getBoolean("config.log_init",false)){
+                Astronomican.logger.info("效果名称 -> "+eff_name);
+                Astronomican.logger.info("等级 -> "+level);
+                Astronomican.logger.info("范围 -> "+range_min+" - "+range_max);
+                Astronomican.logger.info("是否增益 -> "+gl);
+            }
             PotionEffectType pet = PotionEffectType.getByName(eff_name);
             //检查合法性
             if(pet==null){
